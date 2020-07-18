@@ -1,0 +1,14 @@
+# docker-compose.yml
+version: "3"
+services:
+  sagemaker-notebook-container:
+    #image: qtangs/sagemaker-notebook:tensorflow-p36
+    image: ubuntu-sagemaker-p36:0.0.1
+    container_name: sagemaker-notebook-container
+    ports:
+      - 8888:8888
+    environment:
+      AWS_PROFILE: 'default-api'
+    volumes:
+      - ~/.aws:/home/ec2-user/.aws:ro                    # For AWS Credentials
+      - ./aws-sagemaker:/home/ec2-user/SageMaker/aws-sagemaker
